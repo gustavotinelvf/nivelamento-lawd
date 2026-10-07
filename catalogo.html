@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prateleiras · REWIND</title>
+
+    <link rel="stylesheet" href="css/variaveis.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+    <header class="topo">
+      <a href="index.html" class="logo">REWIND</a>
+      <button class="menu-botao" type="button" aria-label="Abrir menu">
+        MENU
+      </button>
+      <nav class="menu" aria-label="Principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="catalogo.html" class="ativo">Prateleiras</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="secao">
+        <h1 class="secao-titulo">Prateleiras</h1>
+
+        <!-- ========== BUSCA E FILTROS DE MOOD (ligados com JS na fase 3) ==========
+           O data-mood de cada botão tem que bater com o data-mood das fitas. -->
+        <div class="controles">
+          <label for="busca">Buscar</label>
+          <input
+            type="search"
+            id="busca"
+            placeholder="Nome da faixa ou artista"
+          />
+
+          <div class="moods" id="moods">
+            <button class="mo ativo" type="button" data-mood="todos">
+              Todos
+            </button>
+            <button class="mo" type="button" data-mood="madrugada">
+              Madrugada
+            </button>
+            <button class="mo" type="button" data-mood="sol">Dia de sol</button>
+            <button class="mo" type="button" data-mood="melancolia">
+              Melancolia
+            </button>
+            <button class="mo" type="button" data-mood="rock">
+              Rock'n'roll
+            </button>
+          </div>
+        </div>
+
+        <!-- ========== FITAS ==========
+           Na fase 2 essas fitas saem daqui e passam a ser geradas pelo JS
+           a partir do array em js/dados.js. Por enquanto ficam fixas pra
+           fechar o visual primeiro.
+           Estrutura de cada fita: o K7 (.tp) fica ATRÁS da capa (.sl) e
+           desliza pra fora no hover/toque, como o disco saindo da capa de vinil.
+           - .tp-img  = foto do K7 (PNG com fundo transparente, em img/fitas/)
+           - .lb      = camada de texto por cima do rótulo branco (artista + faixa)
+           - .sl-capa = foto da música; .sl-selo = etiqueta com o mood -->
+        <div class="grade-vhs" id="lista-fitas">
+          <article class="vhs" data-mood="madrugada">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 01</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 01"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/madrugada-01.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Madrugada</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="madrugada">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 02</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 02"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/madrugada-02.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Madrugada</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="sol">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 03</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 03"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/sol-01.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Dia de sol</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="sol">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 04</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 04"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/sol-02.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Dia de sol</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="melancolia">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 05</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 05"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/melancolia-01.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Melancolia</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="melancolia">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 06</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 06"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/melancolia-02.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Melancolia</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="rock">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 07</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 07"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/rock-01.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Rock'n'roll</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="rock">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 08</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 08"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/rock-02.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Rock'n'roll</span>
+            </button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <p>REWIND · Projeto de nivelamento · LAWD · UFS</p>
+      <p>
+        Capas e imagens usadas apenas para fins acadêmicos. Créditos aos
+        respectivos autores.
+      </p>
+    </footer>
+
+    <!-- Fase 2 em diante: descomentar quando os arquivos existirem
+  <script src="js/dados.js"></script>
+  <script src="js/main.js"></script>
+  --></body>
+</html>

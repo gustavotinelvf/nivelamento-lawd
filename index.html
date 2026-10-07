@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REWIND · Uma fita pra cada dia</title>
+
+    <!-- A ordem importa: variáveis -> base -> componentes -->
+    <link rel="stylesheet" href="css/variaveis.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/componentes.css" />
+  </head>
+  <body>
+    <!-- ========== CABEÇALHO ========== -->
+    <header class="topo">
+      <a href="index.html" class="logo">REWIND</a>
+
+      <!-- O botão só aparece no celular; o JS que abre o menu entra na fase 5 -->
+      <button class="menu-botao" type="button" aria-label="Abrir menu">
+        MENU
+      </button>
+
+      <nav class="menu" aria-label="Principal">
+        <ul>
+          <li><a href="index.html" class="ativo">Início</a></li>
+          <li><a href="catalogo.html">Prateleiras</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ========== HERO ========== -->
+      <section class="hero">
+        <h1 class="hero-titulo">REWIND</h1>
+        <p class="hero-texto">
+          Uma fita pra cada dia. Escolhe o mood e aperta play.
+        </p>
+        <a href="catalogo.html" class="botao">Ver prateleiras</a>
+      </section>
+
+      <!-- ========== FAIXA ROLANDO (animação feita só em CSS) ==========
+         O texto aparece duas vezes de propósito: a animação anda 50%
+         e volta, e assim o loop não dá "pulo". -->
+      <div class="faixa" aria-hidden="true">
+        <p class="faixa-trilho">
+          MADRUGADA ✦ DIA DE SOL ✦ MELANCOLIA ✦ ROCK'N'ROLL ✦ MADRUGADA ✦ DIA DE
+          SOL ✦ MELANCOLIA ✦ ROCK'N'ROLL ✦
+        </p>
+      </div>
+
+      <!-- ========== MOODS ========== -->
+      <section class="secao">
+        <h2 class="secao-titulo">Escolhe o dia</h2>
+
+        <div class="grade-moods">
+          <a href="catalogo.html#madrugada" class="mood-bloco mood-madrugada"
+            >Madrugada</a
+          >
+          <a href="catalogo.html#sol" class="mood-bloco mood-sol">Dia de sol</a>
+          <a href="catalogo.html#melancolia" class="mood-bloco mood-melancolia"
+            >Melancolia</a
+          >
+          <a href="catalogo.html#rock" class="mood-bloco mood-rock"
+            >Rock'n'roll</a
+          >
+        </div>
+      </section>
+
+      <!-- ========== EM DESTAQUE (3 fitas) ==========
+         Estrutura de cada fita: o K7 (.tp) fica ATRÁS da capa (.sl).
+         No hover/toque ele desliza pra fora, como o disco saindo da capa de vinil.
+         - .tp-img  = foto do K7 (PNG com fundo transparente, em img/fitas/)
+         - .lb      = camada de texto por cima do rótulo branco (artista + faixa)
+         - .sl-capa = foto da música; .sl-selo = etiqueta com o mood
+         Dentro do <button> só pode <span> (não pode <div>). -->
+      <section class="secao secao-azul">
+        <h2 class="secao-titulo">Em destaque</h2>
+
+        <div class="grade-vhs">
+          <article class="vhs" data-mood="madrugada">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 01</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 01"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/madrugada-01.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Madrugada</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="sol">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 02</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 02"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/sol-01.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Dia de sol</span>
+            </button>
+          </article>
+
+          <article class="vhs" data-mood="melancolia">
+            <div class="tp">
+              <img class="tp-img" src="img/fitas/k7.png" alt="" />
+              <p class="lb"><b>Artista 03</b><span>Nome da faixa</span></p>
+            </div>
+            <button
+              class="sl"
+              type="button"
+              aria-label="Abrir fita: Nome da faixa, Artista 03"
+            >
+              <img
+                class="sl-capa"
+                src="img/capas/melancolia-01.jpg"
+                alt="Capa de Nome da faixa"
+              />
+              <span class="sl-selo">Melancolia</span>
+            </button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== RODAPÉ ========== -->
+    <footer class="rodape">
+      <p>REWIND · Projeto de nivelamento · LAWD · UFS</p>
+      <p>
+        Capas e imagens usadas apenas para fins acadêmicos. Créditos aos
+        respectivos autores.
+      </p>
+    </footer>
+  </body>
+</html>
