@@ -1,0 +1,30 @@
+*,*::before,*::after {
+    margin: 0;
+    padding: 0; /* Aqui eu meio que resetei o espaçamento que já vem do navegador para ter controle total do visual */
+    box-sizing: border-box;
+}
+
+body { 
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-texto);
+}
+
+/* Títulos */
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--fonte-titulo);
+    font-weight: normal; /* precisei colocar isso porque a fonte do titulo já é bem grossa, então não precisava de mais peso */
+}
+
+/* Links*/
+
+a {
+    text-decoration: none; /* Aqui eu removi o sublinhado dos links */
+    color: inherit; /* Descobri que o inherit faz com que o link herde a cor do elemento pai, então se o link estiver dentro de um parágrafo, ele vai ter a mesma cor do parágrafo */
+}
+
+/* Imagens */
+img {
+    max-width: 100%; /* Aqui eu fiz com que a imagem nunca ultrapasse o tamanho do elemento pai */
+    display: block; /* Aqui eu removi o espaçamento que o navegador coloca embaixo da imagem */
+}

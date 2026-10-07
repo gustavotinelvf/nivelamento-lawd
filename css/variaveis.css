@@ -1,0 +1,24 @@
+/* 
+Uso esse arquivo de variáveis CSS para definir as cores, fontes, e tudo que tiver a ver com a identidade visual do site;
+
+Colocamos as variáveis dentro de um seletor específico chamado roots que representa o elemento raiz de todo documento HTML
+Isso significa dizer que todas as variáveis definidas dentro do seletor :root estarão disponíveis para todos os elementos do documento
+
+*/
+
+:root {
+    /* Cores */
+    --cor-fundo: #0E0E0E; /* preto */
+    --cor-fundo-card: #171717; /* cinza escuro */
+    --cor-destaque: #6B1020; /* vermelho escuro */
+    --cor-destaque-hover: #8C1830; /* vermelho mais claro */
+    --cor-alerta: #E0DB9C; /* amarelo */
+
+    /* Textos e Bordas */
+    --cor-texto: #EDE9DC; /* branco */
+    --cor-borda: #EDE9DC; /* branco */
+
+    /* Tipografia */
+    --fonte-titulo: 'Shrikhand', Impact, "Arial Black", cursive;
+    --fonte-texto: 'DM Mono', "Courier New", Courier, monospace;
+}

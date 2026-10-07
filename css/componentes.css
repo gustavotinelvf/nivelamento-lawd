@@ -1,0 +1,43 @@
+/* 
+É com esse arquivo que vou criar os componentes reutilizáveis do projeto
+Estilizo partes específicas do site, como o cabeçalho, o rodapé, os cards, os botões, etc.
+*/
+
+/* Cabeçalho */
+.topo {
+    display: flex; /* faz o cabeçalho ser uma linha flexivel */
+    justify-content: space-between; /* Joga um item pra cada lado */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 12px 16px; /* Espaçamento interno */
+
+    border-bottom: 3px solid var(--cor-borda); /* Coloca uma borda embaixo do cabeçalho */
+}
+
+.logo{
+    font-family: var(--fonte-titulo); /* Coloca a fonte do titulo */
+    font-size: 28px; /* Coloca o tamanho da fonte do titulo */
+    color: var(--cor-alerta); /* Coloca a cor do titulo */
+    text-transform: uppercase; /* Coloca o titulo em caixa alta */
+}
+
+.menu-botao{
+    display: hidden; /* Esconde o botão do menu */
+}
+
+.menu ul {
+    list-style: none; /* Remove os marcadores da lista */
+    display: flex; /* Faz a lista ser uma linha flexivel */
+    gap: 24px; /* Coloca um espaçamento entre os itens da lista */
+}
+
+.menu a {
+    text-transform: uppercase; /* Coloca os links em caixa alta */
+    font-weight: bold; /* Coloca os links em negrito */
+    font-size: 14px; /* Coloca o tamanho da fonte dos links */
+    transition: color 0.3s; /* Coloca uma transição suave ao mudar de cor */
+}
+
+.menu a:hover,
+.menu a.ativo {
+    color: var(--cor-destaque-hover); /* Coloca a cor do link ao passar o mouse */
+}
