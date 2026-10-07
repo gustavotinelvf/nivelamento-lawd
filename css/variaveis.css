@@ -1,0 +1,36 @@
+/* ==========================================
+   VARIÁVEIS.CSS
+   Aqui guardamos nossas cores, fontes e 
+   medidas padrão do design brutalista.
+   ========================================== */
+
+/* Importando as fontes do Google Fonts (o @import precisa ser a primeira coisa do arquivo) */
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Shrikhand&display=swap");
+
+:root {
+  /* Cores baseadas no guia de estilo */
+  --cor-fundo: #0e0e0e; /* Preto */
+  --cor-fundo-card: #171717; /* Preto 2 */
+  --cor-destaque: #6b1020; /* Vinho */
+  --cor-destaque-hover: #8c1830;
+  --cor-alerta: #e0db9c; /* Amarelo pastel */
+  --cor-secundaria: #12233f; /* Azul escuro */
+
+  /* Textos e Bordas */
+  --cor-texto: #ede9dc; /* Off-white */
+  --cor-borda: #ede9dc;
+
+  /* Cor de cada mood (usada nos blocos da home e no "filtro" das capas) */
+  --mood-madrugada: #3b5b8f;
+  --mood-sol: #c9c27a;
+  --mood-melancolia: #8c1830;
+  --mood-rock: #5a1220;
+
+  /* Tipografia */
+  --fonte-titulo: "Shrikhand", Impact, "Arial Black", cursive;
+  --fonte-texto: "DM Mono", "Courier New", Courier, monospace;
+
+  /* Medidas que se repetem */
+  --borda: 3px solid var(--cor-borda);
+  --sombra: 6px 6px 0 var(--cor-destaque);
+}

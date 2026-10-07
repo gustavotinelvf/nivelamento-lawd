@@ -58,13 +58,8 @@
         <!-- ========== FITAS ==========
            Na fase 2 essas fitas saem daqui e passam a ser geradas pelo JS
            a partir do array em js/dados.js. Por enquanto ficam fixas pra
-           fechar o visual primeiro.
-           Estrutura de cada fita: o K7 (.tp) fica ATRÁS da capa (.sl) e
-           desliza pra fora no hover/toque, como o disco saindo da capa de vinil.
-           - .tp-img  = foto do K7 (PNG com fundo transparente, em img/fitas/)
-           - .lb      = camada de texto por cima do rótulo branco (artista + faixa)
-           - .sl-capa = foto da música; .sl-selo = etiqueta com o mood -->
-        <div class="grade-vhs" id="lista-fitas">
+           fechar o visual primeiro. -->
+        <div class="grade-fitas" id="lista-fitas">
           <article class="vhs" data-mood="madrugada">
             <div class="tp">
               <img class="tp-img" src="img/fitas/k7.png" alt="" />
@@ -228,8 +223,8 @@
       </p>
     </footer>
 
-    <!-- Fase 2 em diante: descomentar quando os arquivos existirem
+    <script src="js/main.js"></script>
+    <!-- Fase 2: depois de criar o dados.js, adicionar antes do main.js:
   <script src="js/dados.js"></script>
-  <script src="js/main.js"></script>
   --></body>
 </html>

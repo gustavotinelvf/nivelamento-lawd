@@ -1,0 +1,154 @@
+/* --- CABEÇALHO --- */
+.topo {
+  display: flex; /* Faz o cabeçalho ser uma linha flexível */
+  justify-content: space-between; /* Joga um item pra cada lado (logo na esquerda, menu na direita) */
+  align-items: center; /* Centraliza os itens verticalmente */
+  flex-wrap: wrap; /* No celular o menu quebra pra linha de baixo */
+  padding: 12px 16px; /* Espaçamento interno */
+  border-bottom: 3px solid var(--cor-borda); /* Borda dura embaixo do cabeçalho */
+}
+
+.logo {
+  font-family: var(--fonte-titulo);
+  font-size: 28px;
+  color: var(--cor-alerta);
+  text-transform: uppercase;
+}
+
+/* --- MENU / NAVEGAÇÃO --- */
+.menu ul {
+  list-style: none; /* Tira as bolinhas da lista */
+  display: flex;
+  gap: 24px;
+}
+
+.menu a {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-bottom: 2px;
+  border-bottom: 3px solid transparent; /* Deixa o link com a mesma altura do hover, mas invisível */
+}
+
+.menu a:hover,
+.menu a.ativo {
+  border-bottom-color: var(
+    --cor-alerta
+  ); /* reserva o espaço da borda, mas deixa invisível */
+}
+
+/* O botão MENU só aparece no celular*/
+.menu-botao {
+  display: none; /* Esconde o botão no desktop */
+  background: var(--cor-destaque); /* Fundo Vinho (--cor-destaque) */
+  color: var(--cor-alerta); /* Texto Amarelo (--cor-alerta) */
+  border: 2px solid var(--cor-borda); /* Borda Off-white (--cor-borda) */
+  border-radius: 0;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer; /* Transforma o mouse numa "mãozinha" ao passar por cima (achei legal)*/
+}
+
+/* HERO (primeira tela da minha home) */
+.hero {
+  padding: 48px 16px 40px;
+}
+
+.hero-titulo {
+  font-size: clamp(
+    3.5rem,
+    18vw,
+    9rem
+  ); /* Faz o título crescer e encolher conforme a tela */
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--cor-texto);
+  text-shadow: 5px 5px 0 var(--cor-destaque); /* Sombra dura do título */
+  margin-bottom: 16px;
+}
+
+.hero-texto {
+  max-width: 36ch; /* Limita a largura do texto pra não ficar muito grande */
+  margin-bottom: 28px;
+}
+
+/* Botão */
+.botao {
+  display: inline-block;
+  background-color: var(--cor-destaque);
+  color: var(--cor-alerta);
+  border: var(--borda);
+  box-shadow: 6px 6px 0var (--cor-alerta);
+  padding: 12px 22px;
+  text-transform: uppercase;
+  transition:
+    0.15s,
+    box-shadow 0.15s; /* Faz a transição do hover ser suave */
+}
+
+.botao:hover {
+  background: var(--cor-destaque-hover);
+  transform: translate(-1px, -1px); /* O botão "sobe" e a sombra cresce */
+  box-shadow: px 9px 0 var(--cor-alerta);
+}
+
+.faixa {
+  overflow: hidden; /* Esconde a parte do texto que "vaza" da faixa */
+  background: var(--cor-destaque);
+  color: var(--cor-alerta);
+  border-block: var(--fonte-titulo);
+  padding: 8px 0;
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+}
+
+.faixa-trilho {
+  display: inline-block;
+  white-space: nowrap; /* Faz o texto não quebrar de linha */
+  animation: faixa-rolagem 20s linear infinite; /* Faz o texto rolar infinitamente */
+}
+
+@keyframes rolar {
+  to {
+    transform: translateX(-50%);
+  } /* Faz o texto rolar até sumir da tela */
+}
+
+/* SEÇÕES */
+
+.secao {
+  padding: 40px 16px;
+}
+
+.secao-azul {
+  background: var(--cor-secundaria);
+  border-block: var(--borda);
+}
+
+.secao-titulo {
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  margin-bottom: 24px;
+  color: var(--cor-alerta);
+}
+
+/* Blocos de mood*/
+
+.grade-moods {
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.mood-bloco {
+  display: flex;
+  align-items: flex-end; /* Faz o texto ficar embaixo da imagem */
+  min-height: 130px; /* Garante que todos os blocos tenham a mesma altura */
+  padding: 12px;
+  border: var(--borda);
+  box-shadow: var(--sombra);
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  color: var(--cor-texto);
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}

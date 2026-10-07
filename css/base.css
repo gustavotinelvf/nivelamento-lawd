@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0; /* Reset do espaçamento do navegador para ter controle total do visual */
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  line-height: 1.5;
+}
+
+/* Títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fonte-titulo);
+  font-weight: normal; /* A fonte do título já é bem grossa, não precisa de mais peso */
+}
+
+/* Links */
+a {
+  text-decoration: none; /* Remove o sublinhado dos links */
+  color: inherit; /* Faz com que o link herde a cor do elemento pai */
+}
+
+/* Imagens */
+img {
+  max-width: 100%; /* Garante que a imagem nunca vaze da tela */
+  display: block; /* Remove o espaçamento invisível embaixo das imagens */
+}
+
+/* Botões herdam a fonte do site (por padrão o navegador usa outra) */
+button,
+input {
+  font-family: inherit;
+}
+
+/* Foco visível pra quem navega com teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--cor-alerta);
+  outline-offset: 3px;
+}
