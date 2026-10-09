@@ -1,10 +1,3 @@
-/* ==========================================
-   DADOS.JS
-   A lista de todas as fitas do site.
-   Pra adicionar uma fita, copie um bloco { ... } e mude os valores.
-   Não esqueça da vírgula entre os blocos!
-   ========================================== */
-
 /* Nome bonito de cada mood (a chave tem que ser igual ao "mood" das fitas e aos botões do HTML) */
 var nomesMood = {
   madrugada: "Madrugada",
