@@ -1,3 +1,8 @@
+/* ==========================================
+   BASE.CSS
+   Reset de navegador e estilos globais de tags
+   ========================================== */
+
 *,
 *::before,
 *::after {
@@ -48,4 +53,42 @@ button:focus-visible,
 input:focus-visible {
   outline: 3px solid var(--cor-alerta);
   outline-offset: 3px;
+}
+
+/* ==========================================
+   FUNDO COM TEXTURA (sem gradiente)
+   Três camadas, todas em SVG dentro do próprio CSS:
+   1) cruzinhas de registro de impressão no fundo
+   2) grão de filme por cima de tudo
+   3) pontilhado (meio-tom) nas seções azuis
+   ========================================== */
+
+/* 1) Cruzinhas: ficam ATRÁS do conteúdo (z-index negativo) */
+body::before {
+  content: "";
+  position: fixed; /* Acompanha a tela quando rola */
+  inset: 0;
+  z-index: -1;
+  pointer-events: none; /* Não atrapalha cliques */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M32 26v12M26 32h12' stroke='%23EDE9DC' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-size: 64px 64px;
+  opacity: 0.14;
+}
+
+/* 2) Grão: fica POR CIMA de tudo, bem fraquinho, e dá cara de impressão/fita antiga */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.1; /* Aumente pra mais grão, diminua pra menos */
+}
+
+/* 3) Pontilhado nas seções azuis (a cor azul continua vindo do .secao-azul) */
+.secao-azul {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Ccircle cx='5' cy='5' r='1.2' fill='%23EDE9DC' fill-opacity='.12'/%3E%3C/svg%3E");
+  background-size: 10px 10px;
 }

@@ -5,7 +5,38 @@
    ========================================== */
 
 /* Importando as fontes do Google Fonts (o @import precisa ser a primeira coisa do arquivo) */
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Shrikhand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap");
+
+/* Fonte dos títulos (arquivo local, na pasta fonts/).
+   O caminho começa com ../ porque este CSS está dentro de css/ e a pasta fonts/ fica ao lado dela. */
+@font-face {
+  font-family: "JHC Mauriac";
+  src:
+    url("../fonts/JHCMauriac-ExtraBold.otf") format("opentype"),
+    url("../fonts/JHCMauriac-ExtraBold.ttf") format("truetype");
+  /* Só existe o peso ExtraBold. Declarar o intervalo evita que o navegador invente um negrito falso. */
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap; /* Mostra a fonte reserva enquanto a nossa carrega */
+}
+
+@font-face {
+  font-family: "JHC Mauriac";
+  src:
+    url("../fonts/JHCMauriac-ExtraBoldItalic.otf") format("opentype"),
+    url("../fonts/JHCMauriac-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Milker";
+  src: url("../fonts/Milker.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* Cores baseadas no guia de estilo */
@@ -27,10 +58,29 @@
   --mood-rock: #5a1220;
 
   /* Tipografia */
-  --fonte-titulo: "Shrikhand", Impact, "Arial Black", cursive;
+  --fonte-mauriac:
+    "JHC Mauriac", Georgia, "Times New Roman", serif; /* Serifa larga e pesada, mais retrô */
+  --fonte-milker:
+    "Milker", Impact, "Arial Black", sans-serif; /* Sem serifa, extra larga, mais brutalista */
+  --fonte-titulo: var(
+    --fonte-milker
+  ); /* PARA COMPARAR: troque por var(--fonte-mauriac) */
   --fonte-texto: "DM Mono", "Courier New", Courier, monospace;
 
   /* Medidas que se repetem */
   --borda: 3px solid var(--cor-borda);
   --sombra: 6px 6px 0 var(--cor-destaque);
+
+  /* Listras horizontais, tiradas das capas de VHS retrô. Aparecem em vários lugares do site pra amarrar o visual */
+  --listras: linear-gradient(
+    to bottom,
+    var(--cor-alerta) 0 25%,
+    var(--cor-destaque-hover) 25% 50%,
+    var(--cor-destaque) 50% 75%,
+    var(--cor-secundaria) 75% 100%
+  );
+
+  /* Largura máxima do conteúdo em telas grandes */
+  --largura-max: 1200px;
+  --margem-lateral: max(16px, calc((100vw - var(--largura-max)) / 2));
 }
