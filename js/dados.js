@@ -1,3 +1,10 @@
+/* ==========================================
+   DADOS.JS
+   A lista de todas as fitas do site.
+   Pra adicionar uma fita, copie um bloco { ... } e mude os valores.
+   Não esqueça da vírgula entre os blocos!
+   ========================================== */
+
 /* Nome bonito de cada mood (a chave tem que ser igual ao "mood" das fitas e aos botões do HTML) */
 var nomesMood = {
   madrugada: "Madrugada",
@@ -10,58 +17,117 @@ var nomesMood = {
    artista   -> nome que aparece no rótulo do K7
    faixa     -> nome da música
    mood      -> madrugada | sol | melancolia | rock
-   capa      -> nome do arquivo dentro de img/capas/ (minúsculo, sem espaço nem acento)
-   destaque  -> true se for aparecer na home em "Em destaque" (opcional) */
+   capa      -> nome do arquivo dentro de img/capas/<mood>/  (ex.: img/capas/sol/sol-01.jpg  ->  "sol-01.jpg")
+                 minúsculo, sem espaço nem acento
+   destaque  -> true se for aparecer na home em "Em destaque" (opcional)
+   ajuste    -> (opcional) "contain" (padrão): mostra a arte inteira, com faixas escuras se a proporção não bater
+                           "cover": preenche a capa inteira, cortando as bordas da imagem
+   foco      -> (opcional) só vale com "cover": qual parte da imagem fica visível. Ex.: "50% 0%" = topo, "50% 100%" = base, "0% 50%" = esquerda */
 var fitas = [
+  /* ===== MADRUGADA (pasta img/capas/madrugada/) ===== */
   {
-    artista: "Artista 01",
-    faixa: "Nome da faixa 01",
+    artista: "Asal",
+    faixa: "That's How It Goes",
     mood: "madrugada",
-    capa: "madrugada-01.jpg",
+    capa: "asal.jpg",
     destaque: true,
   },
   {
-    artista: "Artista 02",
-    faixa: "Nome da faixa 02",
+    artista: "DJO",
+    faixa: "End Of Beginning",
     mood: "madrugada",
-    capa: "madrugada-02.jpg",
+    capa: "EndOfBeginning.jpg",
   },
   {
-    artista: "Artista 03",
-    faixa: "Nome da faixa 03",
+    artista: "Pink Floyd",
+    faixa: "Time",
+    mood: "madrugada",
+    capa: "Time.jpg",
+  },
+  {
+    artista: "Coldplay",
+    faixa: "Yellow",
+    mood: "madrugada",
+    capa: "Coldplay yellow.jpg",
+  },
+
+  /* ===== DIA DE SOL (pasta img/capas/sol/) ===== */
+  {
+    artista: "Mamonas Assassinas",
+    faixa: "Brasília Amarela",
     mood: "sol",
-    capa: "sol-01.jpg",
+    capa: "mamonas.jpg",
     destaque: true,
   },
   {
-    artista: "Artista 04",
-    faixa: "Nome da faixa 04",
+    artista: "Rita Lee",
+    faixa: "Mania de Você",
     mood: "sol",
-    capa: "sol-02.jpg",
+    capa: "ManiaDeVoce.jpg",
   },
   {
-    artista: "Artista 05",
-    faixa: "Nome da faixa 05",
+    artista: "Jorge Ben Jor",
+    faixa: "Chove Chuva",
+    mood: "sol",
+    capa: "cartola.jpg",
+  },
+  {
+    artista: "Gal Costa",
+    faixa: "Azul",
+    mood: "sol",
+    capa: "GalCosta.jpg",
+  },
+
+  /* ===== MELANCOLIA (pasta img/capas/melancolia/) ===== */
+  {
+    artista: "Harry Styles",
+    faixa: "Sign of the Times",
     mood: "melancolia",
-    capa: "melancolia-01.jpg",
+    capa: "SOTT.jpg",
     destaque: true,
   },
   {
-    artista: "Artista 06",
-    faixa: "Nome da faixa 06",
+    artista: "Lana Del Rey",
+    faixa: "Gods & Monsters",
     mood: "melancolia",
-    capa: "melancolia-02.jpg",
+    capa: "Lana.jpg",
   },
   {
-    artista: "Artista 07",
-    faixa: "Nome da faixa 07",
-    mood: "rock",
-    capa: "rock-01.jpg",
+    artista: "Jeff Buckley",
+    faixa: "Lover, You Should've Come Over",
+    mood: "melancolia",
+    capa: "Lover.jpg",
   },
   {
-    artista: "Artista 08",
-    faixa: "Nome da faixa 08",
+    artista: "Frank Ocean",
+    faixa: "Ivy",
+    mood: "melancolia",
+    capa: "blond.jpg",
+  },
+
+  /* ===== ROCK'N'ROLL (pasta img/capas/rock/) ===== */
+  {
+    artista: "Queen",
+    faixa: "Bohemian Rhapsody",
     mood: "rock",
-    capa: "rock-02.jpg",
+    capa: "Queen.jpg",
+  },
+  {
+    artista: "Guns N' Roses",
+    faixa: "Sweet Child O' Mine",
+    mood: "rock",
+    capa: "Guns.jpg",
+  },
+  {
+    artista: "Queens of the Stone Age",
+    faixa: "No One Knows",
+    mood: "rock",
+    capa: "QOTSA.jpg",
+  },
+  {
+    artista: "David Bowie",
+    faixa: "Starman",
+    mood: "rock",
+    capa: "Starman.jpg",
   },
 ];

@@ -46,6 +46,9 @@
   --cor-destaque-hover: #8c1830;
   --cor-alerta: #e0db9c; /* Amarelo pastel */
   --cor-secundaria: #12233f; /* Azul escuro */
+  --cor-sobre-destaque: var(
+    --cor-alerta
+  ); /* Cor do texto QUANDO o fundo é a cor de destaque (botão, faixa) */
 
   /* Textos e Bordas */
   --cor-texto: #ede9dc; /* Off-white */
@@ -83,4 +86,64 @@
   /* Largura máxima do conteúdo em telas grandes */
   --largura-max: 1200px;
   --margem-lateral: max(16px, calc((100vw - var(--largura-max)) / 2));
+}
+
+/* ==========================================
+   PALETAS POR MOOD
+   O JS coloca data-mood="..." na tag <html> quando a pessoa escolhe um mood
+   (veja main.js). Aqui só trocamos o valor das variáveis: o resto do site
+   usa var(--cor-...) e muda sozinho.
+   Sem data-mood (ou "Todos") vale a paleta padrão lá de cima.
+   ========================================== */
+
+/* Madrugada: azul-noite, frio, com luz de lua */
+:root[data-mood="madrugada"] {
+  --cor-fundo: #080b1c;
+  --cor-fundo-card: #10162e;
+  --cor-destaque: #26407a;
+  --cor-destaque-hover: #3556a3;
+  --cor-alerta: #a9c1f0;
+  --cor-secundaria: #141c3f;
+  --cor-texto: #dce5f7;
+  --cor-borda: #dce5f7;
+  --cor-sobre-destaque: #dce8ff;
+}
+
+/* Dia de sol: o único tema CLARO. Fundo de verão, laranja e dourado, texto escuro */
+:root[data-mood="sol"] {
+  --cor-fundo: #f8e4a0;
+  --cor-fundo-card: #fff2c4;
+  --cor-destaque: #c23a1d;
+  --cor-destaque-hover: #a32f15;
+  --cor-alerta: #a8380f;
+  --cor-secundaria: #f4be45;
+  --cor-texto: #2b1a08;
+  --cor-borda: #2b1a08;
+  --cor-sobre-destaque: #fff1c9;
+}
+
+/* Rock'n'roll: preto, vermelho sirene e amarelo ácido */
+:root[data-mood="rock"] {
+  --cor-fundo: #0a0a0a;
+  --cor-fundo-card: #161616;
+  --cor-destaque: #d90500;
+  --cor-destaque-hover: #ff2e22;
+  --cor-alerta: #f2e600;
+  --cor-secundaria: #7a0c2e;
+  --cor-texto: #f2f2f2;
+  --cor-borda: #f2f2f2;
+  --cor-sobre-destaque: #ffffff;
+}
+
+/* Melancolia: cinza esverdeado, apagado, de dia de chuva */
+:root[data-mood="melancolia"] {
+  --cor-fundo: #111615;
+  --cor-fundo-card: #192120;
+  --cor-destaque: #46595c;
+  --cor-destaque-hover: #5a7174;
+  --cor-alerta: #a3b8b5;
+  --cor-secundaria: #1d2b2c;
+  --cor-texto: #cbd5d3;
+  --cor-borda: #cbd5d3;
+  --cor-sobre-destaque: #e6eeec;
 }

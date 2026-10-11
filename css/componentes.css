@@ -1,3 +1,8 @@
+/* ==========================================
+   COMPONENTES.CSS
+   Estilizo partes específicas do site (cabeçalho, cards, etc)
+   ========================================== */
+
 /* Contador automático das seções: gera o "01 /", "02 /" sem mexer no HTML */
 body {
   counter-reset: secao;
@@ -46,7 +51,7 @@ body {
 .menu-botao {
   display: none;
   background: var(--cor-destaque);
-  color: var(--cor-alerta);
+  color: var(--cor-sobre-destaque);
   border: 2px solid var(--cor-borda);
   border-radius: 0;
   padding: 6px 12px;
@@ -97,7 +102,7 @@ body {
 .botao {
   display: inline-block;
   background: var(--cor-destaque);
-  color: var(--cor-alerta);
+  color: var(--cor-sobre-destaque);
   border: var(--borda);
   box-shadow: 6px 6px 0 var(--cor-alerta);
   padding: 10px 24px;
@@ -120,7 +125,7 @@ body {
 .faixa {
   overflow: hidden; /* Esconde o que passa da tela */
   background: var(--cor-destaque);
-  color: var(--cor-alerta);
+  color: var(--cor-sobre-destaque);
   border-block: var(--borda);
   padding: 8px 0;
   font-family: var(--fonte-titulo);
@@ -254,7 +259,7 @@ body {
 }
 .mood-sol {
   background-color: var(--mood-sol);
-  color: var(--cor-fundo);
+  color: #0e0e0e;
 } /* Fundo claro: texto escuro */
 .mood-melancolia {
   background-color: var(--mood-melancolia);
@@ -312,173 +317,154 @@ body {
   box-shadow: 4px 4px 0 var(--cor-destaque);
 }
 
-/* --- FITAS (capa vertical + K7 saindo de dentro) --- */
+/* --- FITAS (capa vertical de VHS + fita saindo de dentro) --- */
 .grade-fitas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 32px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 36px 24px;
 }
 
-/* Cada card é um quadrado; a capa ocupa 70% da largura e o K7 sai pela direita */
+/* O card é a capa (60% da largura) + o espaço por onde a fita sai (os 40% da direita).
+   A proporção 29/30 faz a capa ficar com cara de caixa de VHS (bem vertical, ~0,58). */
 .vhs {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 29 / 30;
+  pointer-events: none; /* O espaço vazio do card NÃO reage ao mouse... */
 }
 
-/* Cor de cada mood: vira o "filtro" colorido da foto (duotone) */
-.vhs[data-mood="madrugada"] {
-  --mood-cor: var(--mood-madrugada);
-}
-.vhs[data-mood="sol"] {
-  --mood-cor: var(--mood-sol);
-}
-.vhs[data-mood="melancolia"] {
-  --mood-cor: var(--mood-melancolia);
-}
-.vhs[data-mood="rock"] {
-  --mood-cor: var(--mood-rock);
+.vhs .sl,
+.vhs .tp {
+  pointer-events: auto; /* ...só a capa e a fita reagem. Assim a fita sai quando o mouse está na capa e só volta quando ele sai dos dois */
 }
 
-/* A CAPA (botão) fica na frente, z-index maior */
+/* CAPA (botão): fica na frente */
 .sl {
   position: absolute;
   left: 0;
   top: 0;
-  width: 70%;
+  width: 60%;
   height: 100%;
   z-index: 2;
   padding: 0;
   border: var(--borda);
   border-radius: 0;
-  background: var(--mood-cor, var(--cor-destaque));
+  background: var(--cor-fundo-card);
+  box-shadow: var(--sombra);
   cursor: pointer;
   display: block;
   overflow: hidden;
 }
 
-/* Listras no pé da capa, igual capa de VHS */
+/* Aviso "CAPA" que aparece ATRÁS da imagem enquanto ela não existe (z-index -1 = atrás da foto) */
 .sl::before {
-  content: "";
+  content: "CAPA";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 18px;
-  z-index: 1;
-  background: var(--listras);
+  inset: 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--cor-borda);
+  opacity: 0.35;
 }
 
-/* Foto em preto e branco + multiply = foto tingida com a cor do mood.
-   No hover a foto volta com as cores originais. Pra desligar, apague essas 2 linhas. */
+/* Fundo borrado: a mesma imagem preenchendo a capa inteira, escurecida e desfocada */
+.sl-fundo {
+  position: absolute;
+  inset: -24px; /* Passa das bordas pra o desfoque não deixar beirada clara (o overflow: hidden da capa corta o excesso) */
+  background-size: cover;
+  background-position: center;
+  filter: blur(16px) brightness(0.5);
+}
+
 .sl-capa {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Preenche sem deformar */
-  filter: grayscale(1) contrast(1.15);
-  mix-blend-mode: multiply;
-  transition: filter 0.3s;
-  color: transparent; /* Esconde o texto "alt" enquanto a imagem não existe */
+  object-fit: contain; /* A arte aparece INTEIRA, sem cortar. Se a proporção for diferente da capa, sobram faixas escuras em cima/embaixo (ou nas laterais) */
+  display: block;
+  position: relative; /* Sem isso a imagem ficaria ATRÁS do fundo borrado */
+  z-index: 1;
+  color: transparent; /* Esconde o texto "alt" se a imagem quebrar */
   font-size: 0;
 }
 
-/* Textura de capa gasta por cima da foto (img/texturas/desgaste.png).
-   Se o arquivo ainda não existe, simplesmente não aparece nada. */
+/* Textura de capa gasta por cima (img/texturas/desgaste.png). Sem o arquivo, não aparece nada. */
 .sl::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none; /* O clique passa direto pro botão */
   background: url("../img/texturas/desgaste.png") center / 100% 100% no-repeat;
 }
 
-.sl-selo {
-  position: absolute;
-  left: 8px;
-  bottom: 28px;
-  z-index: 2;
-  padding: 2px 6px;
-  background: var(--cor-alerta);
-  color: var(--cor-fundo);
-  border: 2px solid var(--cor-borda);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* O K7 fica ATRÁS da capa (z-index menor) e já aparece um pouquinho pra fora, igual o disco de vinil */
+/* FITA: fica ATRÁS da capa e já espia um pouquinho pra fora */
 .tp {
   position: absolute;
-  left: 10%;
-  top: 6%;
-  width: 55%;
-  height: 88%;
+  left: 3%;
+  top: 3%;
+  width: 54%;
+  height: 94%;
   z-index: 1;
   transform: translateX(30%);
-  transition: transform 0.45s ease;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .tp-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
 }
 
-/* Texto do artista e da faixa por cima do rótulo branco do K7.
-   ATENÇÃO: top/right/width dependem do PNG escolhido, ajuste olhando o resultado. */
+/* Texto em cima da etiqueta branca da fita.
+   Os números (left, width, top, height) vêm do desenho: a etiqueta ocupa 80% da largura e 34% da altura.
+   Se trocar o vhs.svg por outro PNG, ajuste esses 4 valores. */
 .lb {
   position: absolute;
-  top: 6%;
-  bottom: 6%;
-  right: 7%;
-  width: 34%;
-  writing-mode: vertical-rl; /* Texto na vertical, como nas referências */
-  color: var(--cor-fundo);
-  font-size: 12px;
-  line-height: 1.2;
+  left: 10%;
+  width: 80%;
+  top: 33%;
+  height: 34%;
+  padding: 12px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
   overflow: hidden;
+  color: #0e0e0e; /* A etiqueta é sempre clara, então o texto é sempre escuro */
+  font-size: 12px;
+  line-height: 1.25;
 }
 
 .lb b,
 .lb span {
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* No máximo 2 linhas; o resto vira "..." */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* K7 desliza todo pra fora: no hover (mouse), no teclado e quando o JS põe a classe "aberta" (toque) */
+.lb b {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* A fita sai: no hover (mouse), no teclado e quando o JS põe a classe "aberta" (toque no celular) */
 .vhs.aberta .tp,
 .vhs:has(.sl:focus-visible) .tp {
-  transform: translateX(64%);
-}
-
-.vhs.aberta .sl-capa {
-  filter: none;
-  mix-blend-mode: normal;
+  transform: translateX(80%);
 }
 
 @media (hover: hover) {
   .vhs:hover .tp {
-    transform: translateX(64%);
-  }
-  .vhs:hover .sl-capa {
-    filter: none;
-    mix-blend-mode: normal;
+    transform: translateX(80%);
   }
 }
-
-/* ===== PLACEHOLDER DO K7 =====
-   Enquanto não existe o k7.png, este bloco desenha uma "caixa" no lugar.
-   QUANDO O PNG CHEGAR: apague tudo daqui até o fim deste bloco. */
-.tp {
-  background: var(--cor-fundo-card);
-  border: var(--borda);
-}
-
-.lb {
-  background: var(--cor-texto);
-  padding: 6px 4px;
-}
-/* ===== FIM DO PLACEHOLDER ===== */
 
 /* Mensagem quando a busca/filtro não acha nenhuma fita */
 .vazio {
@@ -561,7 +547,6 @@ body {
     animation: none;
   }
   .tp,
-  .sl-capa,
   .botao,
   .mood-bloco {
     transition: none;

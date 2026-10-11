@@ -92,3 +92,23 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Ccircle cx='5' cy='5' r='1.2' fill='%23EDE9DC' fill-opacity='.12'/%3E%3C/svg%3E");
   background-size: 10px 10px;
 }
+
+/* ==========================================
+   TROCA DE PALETA: transição suave + texturas pro tema claro
+   ========================================== */
+
+/* Quando o mood muda, as cores deslizam em vez de piscar */
+body {
+  transition:
+    background-color 0.5s,
+    color 0.5s;
+}
+
+/* TEMA CLARO (dia de sol): as cruzinhas e o pontilhado claros sumiriam, então usamos versões escuras */
+:root[data-mood="sol"] body::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M32 26v12M26 32h12' stroke='%232B1A08' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+}
+
+:root[data-mood="sol"] .secao-azul {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Ccircle cx='5' cy='5' r='1.2' fill='%232B1A08' fill-opacity='.16'/%3E%3C/svg%3E");
+}
